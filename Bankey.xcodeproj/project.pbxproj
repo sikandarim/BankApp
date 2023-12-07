@@ -13,6 +13,7 @@
 		0F825BD32B20C36100A94D26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F825BD12B20C36100A94D26 /* LaunchScreen.storyboard */; };
 		0F825BDF2B20C8E700A94D26 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F825BDE2B20C8E700A94D26 /* LoginView.swift */; };
 		0F8D88702B21DC8600C00C3E /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8D886F2B21DC8600C00C3E /* OnboardingContainerViewController.swift */; };
+		0F8D88722B21E49800C00C3E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8D88712B21E49800C00C3E /* OnboardingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0F825BD42B20C36100A94D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F825BDE2B20C8E700A94D26 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0F8D886F2B21DC8600C00C3E /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
+		0F8D88712B21E49800C00C3E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				0F8D886F2B21DC8600C00C3E /* OnboardingContainerViewController.swift */,
+				0F8D88712B21E49800C00C3E /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			files = (
 				0F825BDF2B20C8E700A94D26 /* LoginView.swift in Sources */,
 				0F825BCB2B20C36000A94D26 /* LoginViewController.swift in Sources */,
+				0F8D88722B21E49800C00C3E /* OnboardingViewController.swift in Sources */,
 				0F825BC72B20C36000A94D26 /* AppDelegate.swift in Sources */,
 				0F8D88702B21DC8600C00C3E /* OnboardingContainerViewController.swift in Sources */,
 			);
