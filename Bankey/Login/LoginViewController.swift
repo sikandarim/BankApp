@@ -7,11 +7,21 @@
 
 import UIKit
 
+protocol LoginViewControllerDelegate: AnyObject {
+    func didLogin()
+}
+protocol LogoutDelegate: AnyObject {
+    func didLogout()
+}
+
+
 class LoginViewController: UIViewController {
     
     let loginView = LoginView()
-    let loginButton = UIButton(type: .system)
+    let signInButton = UIButton(type: .system)
     let errorMessageLabel = UILabel()
+    
+    weak var delegate: LoginViewControllerDelegate?
     
     var username: String? {
         return loginView.usernameTextField.text
@@ -25,6 +35,11 @@ class LoginViewController: UIViewController {
         style()
         layout()
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        signInButton.configuration?.showsActivityIndicator = false
+      
+    }
 }
 
 extension LoginViewController {
@@ -32,11 +47,11 @@ extension LoginViewController {
     private func style() {
         loginView.translatesAutoresizingMaskIntoConstraints = false
         
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.configuration = .filled()
-        loginButton.configuration?.imagePadding = 8
-        loginButton.setTitle("Sign In", for: [])
-        loginButton.addTarget(self, action: #selector(signInTapped), for: .primaryActionTriggered)
+        signInButton.translatesAutoresizingMaskIntoConstraints = false
+        signInButton.configuration = .filled()
+        signInButton.configuration?.imagePadding = 8
+        signInButton.setTitle("Sign In", for: [])
+        signInButton.addTarget(self, action: #selector(signInTapped), for: .primaryActionTriggered)
         
         errorMessageLabel.translatesAutoresizingMaskIntoConstraints = false
         errorMessageLabel.textAlignment = .center
@@ -47,17 +62,17 @@ extension LoginViewController {
     
     private func layout() {
         view.addSubview(loginView)
-        view.addSubview(loginButton)
+        view.addSubview(signInButton)
         view.addSubview(errorMessageLabel)
         
         NSLayoutConstraint.activate([
             loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             loginView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginView.trailingAnchor, multiplier: 1),
-            loginButton.topAnchor.constraint(equalToSystemSpacingBelow: loginView.bottomAnchor, multiplier: 2),
-            loginButton.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
-            loginButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor),
-            errorMessageLabel.topAnchor.constraint(equalToSystemSpacingBelow: loginButton.bottomAnchor, multiplier: 2),
+            signInButton.topAnchor.constraint(equalToSystemSpacingBelow: loginView.bottomAnchor, multiplier: 2),
+            signInButton.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
+            signInButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor),
+            errorMessageLabel.topAnchor.constraint(equalToSystemSpacingBelow: signInButton.bottomAnchor, multiplier: 2),
             errorMessageLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
             errorMessageLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor),
         ])
@@ -84,7 +99,8 @@ extension LoginViewController {
             return
         }
         if username == "M" && password == "M" {
-            loginButton.configuration?.showsActivityIndicator = true
+            signInButton.configuration?.showsActivityIndicator = true
+            delegate?.didLogin()
         } else {
             configureView(withMessage: "Wrong password")
         }
