@@ -18,6 +18,7 @@
 		0F8D88772B23941200C00C3E /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8D88762B23941200C00C3E /* LocalState.swift */; };
 		0F8D88792B23A87D00C00C3E /* UiViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8D88782B23A87D00C00C3E /* UiViewController+Utils.swift */; };
 		0F8D887B2B23A94400C00C3E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8D887A2B23A94400C00C3E /* MainViewController.swift */; };
+		0F8D887E2B24DFF200C00C3E /* AccountSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8D887D2B24DFF200C00C3E /* AccountSummaryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		0F8D88762B23941200C00C3E /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		0F8D88782B23A87D00C00C3E /* UiViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiViewController+Utils.swift"; sourceTree = "<group>"; };
 		0F8D887A2B23A94400C00C3E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0F8D887D2B24DFF200C00C3E /* AccountSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				0F825BC62B20C36000A94D26 /* AppDelegate.swift */,
 				0F825BDD2B20C8B600A94D26 /* Login */,
 				0F8D886E2B21DC4500C00C3E /* Onboarding */,
+				0F8D887C2B24DFB600C00C3E /* AccountSummary */,
 				0F8D88752B23940000C00C3E /* Utils */,
 				0F825BDB2B20C85600A94D26 /* Files */,
 				0F8D887A2B23A94400C00C3E /* MainViewController.swift */,
@@ -112,6 +115,14 @@
 				0F8D88782B23A87D00C00C3E /* UiViewController+Utils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		0F8D887C2B24DFB600C00C3E /* AccountSummary */ = {
+			isa = PBXGroup;
+			children = (
+				0F8D887D2B24DFF200C00C3E /* AccountSummaryViewController.swift */,
+			);
+			path = AccountSummary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +202,7 @@
 				0F825BCB2B20C36000A94D26 /* LoginViewController.swift in Sources */,
 				0F8D88722B21E49800C00C3E /* OnboardingViewController.swift in Sources */,
 				0F8D887B2B23A94400C00C3E /* MainViewController.swift in Sources */,
+				0F8D887E2B24DFF200C00C3E /* AccountSummaryViewController.swift in Sources */,
 				0F825BC72B20C36000A94D26 /* AppDelegate.swift in Sources */,
 				0F8D88702B21DC8600C00C3E /* OnboardingContainerViewController.swift in Sources */,
 			);
