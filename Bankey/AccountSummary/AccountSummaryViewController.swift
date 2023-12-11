@@ -79,12 +79,24 @@ extension AccountSummaryViewController: UITableViewDelegate {
 
 extension AccountSummaryViewController {
     private func fetchData() {
-        let savings = AccountSummaryCell.ViewModel(accountType: .Banking, accountName: "Basic Savings")
-        let chequing = AccountSummaryCell.ViewModel(accountType: .Banking,accountName: "No-Fee All-In Chequing")
-        let visa = AccountSummaryCell.ViewModel(accountType:.CreditCard,accountName: "Visa Avion Card")
-        let masterCard = AccountSummaryCell.ViewModel(accountType: .CreditCard,accountName: "Student Mastercard")
-        let investment1 = AccountSummaryCell.ViewModel(accountType: .Investement,accountName: "Tax-Free Saver")
-        let investment2 = AccountSummaryCell.ViewModel(accountType: .Investement,accountName: "Growth Fund")
+        let savings = AccountSummaryCell.ViewModel(accountType: .Banking,
+                                                            accountName: "Basic Savings",
+                                                        balance: 929466.23)
+        let chequing = AccountSummaryCell.ViewModel(accountType: .Banking,
+                                                    accountName: "No-Fee All-In Chequing",
+                                                    balance: 17562.44)
+        let visa = AccountSummaryCell.ViewModel(accountType: .CreditCard,
+                                                       accountName: "Visa Avion Card",
+                                                       balance: 412.83)
+        let masterCard = AccountSummaryCell.ViewModel(accountType: .CreditCard,
+                                                       accountName: "Student Mastercard",
+                                                       balance: 50.83)
+        let investment1 = AccountSummaryCell.ViewModel(accountType: .Investement,
+                                                       accountName: "Tax-Free Saver",
+                                                       balance: 2000.00)
+        let investment2 = AccountSummaryCell.ViewModel(accountType: .Investement,
+                                                       accountName: "Growth Fund",
+                                                       balance: 15000.00)
         accounts.append(savings)
         accounts.append(chequing)
         accounts.append(visa)
