@@ -9,11 +9,7 @@ import UIKit
 
 class AccountSummaryViewController: UIViewController {
     
-    let games = [
-        "Pacman",
-        "Space Invaders",
-        "Space Patrol",
-    ]
+    var accounts:[AccountSummaryCell.ViewModel] = []
     
     var tableView = UITableView()
     
@@ -26,11 +22,27 @@ class AccountSummaryViewController: UIViewController {
 extension AccountSummaryViewController {
     private func setup() {
         setupTableView()
+        setupHeaderTableView()
+        fetchData()
+        
+    }
+    
+   private func setupHeaderTableView() {
+       let header = AccountSummaryHeaderView(frame: .zero)
+       var size = header.systemLayoutSizeFitting(UIView.layoutFittingExpandedSize)
+       size.width = UIScreen.main.bounds.width
+       header.frame.size = size
+       
+       tableView.tableHeaderView = header
+        
     }
     
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(AccountSummaryCell.self, forCellReuseIdentifier: AccountSummaryCell.reuseId)
+        tableView.rowHeight = AccountSummaryCell.rowHeight
+       // tableView.tableFooterView = UIView()
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
@@ -46,18 +58,38 @@ extension AccountSummaryViewController {
 
 extension AccountSummaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = games[indexPath.row]
+        guard !accounts.isEmpty else {return UITableViewCell()}
+        let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryCell.reuseId, for: indexPath) as! AccountSummaryCell
+        let account = accounts[indexPath.row]
+        cell.configure(with: account)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return games.count
+        return accounts.count
     }
 }
 
 extension AccountSummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+}
+
+
+extension AccountSummaryViewController {
+    private func fetchData() {
+        let savings = AccountSummaryCell.ViewModel(accountType: .Banking, accountName: "Basic Savings")
+        let chequing = AccountSummaryCell.ViewModel(accountType: .Banking,accountName: "No-Fee All-In Chequing")
+        let visa = AccountSummaryCell.ViewModel(accountType:.CreditCard,accountName: "Visa Avion Card")
+        let masterCard = AccountSummaryCell.ViewModel(accountType: .CreditCard,accountName: "Student Mastercard")
+        let investment1 = AccountSummaryCell.ViewModel(accountType: .Investement,accountName: "Tax-Free Saver")
+        let investment2 = AccountSummaryCell.ViewModel(accountType: .Investement,accountName: "Growth Fund")
+        accounts.append(savings)
+        accounts.append(chequing)
+        accounts.append(visa)
+        accounts.append(masterCard)
+        accounts.append(investment1)
+        accounts.append(investment2)
     }
 }
