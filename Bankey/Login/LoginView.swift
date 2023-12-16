@@ -48,6 +48,7 @@ extension LoginView {
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholder = "Password"
         passwordTextField.delegate = self
+        passwordTextField.enablePasswordToggle()
       
         //Divider
         dividerView.translatesAutoresizingMaskIntoConstraints = false
