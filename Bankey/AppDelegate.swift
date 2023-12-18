@@ -8,28 +8,52 @@
 import UIKit
 
 let appColor: UIColor = .systemTeal
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-    
-    
     let loginViewController = LoginViewController()
-    let onboardingContainerViewController = OnboardingContainerViewController()
-    let dummyViewController = DummyViewController()
+    let onboardingViewController = OnboardingContainerViewController()
     let mainViewController = MainViewController()
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
+        
         loginViewController.delegate = self
-        onboardingContainerViewController.delegate = self
-        dummyViewController.logoutDelegate = self
-        window?.rootViewController = mainViewController
+        onboardingViewController.delegate = self
+        
+        registerForNotifications()
+
+        displayLogin()
         return true
     }
     
-
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didLogout), name: .logout, object: nil)
+    }
+    
+    private func displayLogin() {
+        setRootViewController(loginViewController)
+    }
+    
+    private func displayNextScreen() {
+        if LocalState.hasOnboarded {
+            prepMainView()
+            setRootViewController(mainViewController)
+        } else {
+            setRootViewController(onboardingViewController)
+        }
+    }
+    
+    private func prepMainView() {
+        mainViewController.setStatusBar()
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().backgroundColor = appColor
+    }
 }
 
 extension AppDelegate {
@@ -50,32 +74,22 @@ extension AppDelegate {
     }
 }
 
-
-extension AppDelegate:LoginViewControllerDelegate {
-   
+extension AppDelegate: LoginViewControllerDelegate {
     func didLogin() {
-        if LocalState.hasOnboarded {
-            setRootViewController(dummyViewController)
-        } else {
-            setRootViewController(onboardingContainerViewController)
-        }
-       
+        displayNextScreen()
     }
- 
 }
 
-extension AppDelegate:OnboardingContainerViewControllerDelegate {
-    
+extension AppDelegate: OnboardingContainerViewControllerDelegate {
     func didFinishOnboarding() {
         LocalState.hasOnboarded = true
-        setRootViewController(dummyViewController)
+        prepMainView()
+        setRootViewController(mainViewController)
     }
 }
 
-extension AppDelegate:LogoutDelegate {
-    
-    func didLogout() {
+extension AppDelegate: LogoutDelegate {
+    @objc func didLogout() {
         setRootViewController(loginViewController)
     }
 }
-
