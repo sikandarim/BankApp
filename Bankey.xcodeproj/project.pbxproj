@@ -193,7 +193,8 @@
 		0F8D88902B2795BA00C00C3E /* BankeyUnitTest */ = {
 			isa = PBXGroup;
 			children = (
-				0F8D88982B27966600C00C3E /* CurrencyFormatterTest.swift */,
+				0F8D88A52B30CE9100C00C3E /* AccountSummary */,
+				0F8D88A62B30CE9D00C00C3E /* Utils */,
 			);
 			path = BankeyUnitTest;
 			sourceTree = "<group>";
@@ -204,6 +205,21 @@
 				0F8D889F2B2F2A2000C00C3E /* ShakeyBellView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		0F8D88A52B30CE9100C00C3E /* AccountSummary */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AccountSummary;
+			sourceTree = "<group>";
+		};
+		0F8D88A62B30CE9D00C00C3E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0F8D88982B27966600C00C3E /* CurrencyFormatterTest.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
